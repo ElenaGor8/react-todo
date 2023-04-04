@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function AddTodoForm(props) {
     const handleAddTodo = (event) => {
         event.preventDefault();
