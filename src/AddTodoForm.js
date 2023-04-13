@@ -6,7 +6,7 @@ const AddTodoForm = ({ onAddTodo }) => {
     function handleTitleChange(event) {
         const newTodoTitle = event.target.value;
         setTodoTitle(newTodoTitle);
-    }
+    };
 
     const handleAddTodo = (event) => {
         event.preventDefault();
@@ -17,7 +17,7 @@ const AddTodoForm = ({ onAddTodo }) => {
         };
         onAddTodo(todoObject);
         setTodoTitle('');
-    }
+    };
 
     return (
         <form onSubmit={handleAddTodo}>
@@ -28,6 +28,6 @@ const AddTodoForm = ({ onAddTodo }) => {
             <button>Add</button>
         </form>
     );
-}
+};
 
 export default AddTodoForm;
