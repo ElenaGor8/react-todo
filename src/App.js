@@ -10,8 +10,7 @@ function App() {
   React.useEffect(() => {
     new Promise((resolve, reject) =>
       setTimeout(() => resolve({
-        data:
-          { todoList: JSON.parse(localStorage.getItem('savedTodoList')) }
+        data: { todoList: JSON.parse(localStorage.getItem('savedTodoList')) }
       }), 2000)
     ).then((result) => {
       setTodoList(result.data.todoList);
@@ -39,8 +38,11 @@ function App() {
       <h1>Todo List</h1>
       <hr />
       <AddTodoForm onAddTodo={addTodo} />
-      <p></p>
-      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+      )}
     </>
   );
 };
