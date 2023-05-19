@@ -11,11 +11,10 @@ const AddTodoForm = ({ onAddTodo }) => {
     const handleAddTodo = (event) => {
         event.preventDefault();
         console.log(todoTitle);
-        const todoObject = {
-            id: Date.now(),
-            title: todoTitle,
-        };
-        onAddTodo(todoObject);
+        if (todoTitle === "") {
+            return;
+        }
+        onAddTodo(todoTitle);
         setTodoTitle('');
     };
 
