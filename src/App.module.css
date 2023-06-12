@@ -1,0 +1,54 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap');
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(202, 231, 235);
+    color: #101884;
+    font-size: 17px;
+    font-weight: 350;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+button {
+    background-color: rgb(74, 166, 166);
+    color:#101884;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 10px;
+    margin-left: 5px;
+    padding: 10px;
+    border: 2px;
+}
+
+@media (max-width: 768px) {
+   input {
+    width: auto;
+    height: auto;
+   }
+
+   h1 {
+    font-size: 30px;
+    font-weight: 600;
+   }
+
+   h2 {
+    font-size: 20px;
+    font-weight: 600;
+   }
+}
