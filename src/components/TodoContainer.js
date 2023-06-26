@@ -9,15 +9,20 @@ function TodoContainer() {
     const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
 
     const fetchData = async () => {
+        const viewName = "Grid%20view";
+        const queryParam = `view=${viewName}`;
+
         const options = {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
             },
         };
+        
+        const urlWithQueryParam = `${url}?${queryParam}`;
 
         try {
-            const response = await fetch(url, options);
+            const response = await fetch(urlWithQueryParam, options);
 
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
