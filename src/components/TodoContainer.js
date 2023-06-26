@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
+import PropTypes from 'prop-types';
 
 function TodoContainer() {
     const [todoList, setTodoList] = React.useState([]);
@@ -110,5 +111,12 @@ function TodoContainer() {
 
     );
 }
+
+// Define the propTypes property
+TodoContainer.propTypes = {
+    onAddTodo: PropTypes.func,
+    todoList: PropTypes.array,
+    onRemoveTodo: PropTypes.func,
+};
 
 export default TodoContainer;
