@@ -6,7 +6,10 @@ import PropTypes from 'prop-types';
 const TodoListItem = ({ todo, onRemoveTodo }) => {
     return (
         <li className={style.ListItem}>
-            {todo.title}
+            <span>{todo.title}</span>
+            <span>{todo.Priority}</span>
+            <span>{todo.DueDate}</span>
+
             <button className={style.ButtonRemove}
                 type="button"
                 onClick={() => onRemoveTodo(todo.id)}>
