@@ -5,11 +5,10 @@ import PropTypes from 'prop-types';
 
 const TodoListItem = ({ todo, onRemoveTodo }) => {
     return (
-       
-       <li className={style.ListItem}>
+        <li className={style.ListItem}>
             <span>{todo.title}</span>
-            <span>{todo.DueDate}</span>
             <span>{todo.Priority}</span>
+            <span>{todo.DueDate}</span>
 
             <button className={style.ButtonRemove}
                 type="button"

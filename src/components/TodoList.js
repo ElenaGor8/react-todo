@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 const TodoList = ({ todoList, onRemoveTodo }) => (
     <ul>
         <li>
+            <span>Priority</span>
             <span>Title</span>
             <span>Due Date</span>
-            <span>Priority</span>
         </li>
         {todoList.map((todo) => (
             <TodoListItem key={todo.id} todo={todo} onRemoveTodo={onRemoveTodo} />
