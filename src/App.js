@@ -10,7 +10,13 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<TodoContainer tableName={tableName} baseName={baseName} apiKey={apiKey} />} />
+        <Route exact path="/"
+          element={<TodoContainer
+            tableName={tableName}
+            baseName={baseName}
+            apiKey={apiKey}
+          />}
+        />
         <Route exact path="/new" element={<h1>New Todo List</h1>} />
       </Routes>
     </BrowserRouter>

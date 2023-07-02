@@ -2,27 +2,25 @@ import React from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 import PropTypes from 'prop-types';
+import { ReactComponent as Sort } from '../img/arrow-sort-24-filled.svg';
 
 function TodoContainer({ tableName, baseName, apiKey }) {
     const [todoList, setTodoList] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
     const [sortDirection, setSortDirection] = React.useState('asc'); // Default sort direction is ascending
     const url = `https://api.airtable.com/v0/${baseName}/${tableName}`;
-    const toggleSortDirection = () => {
-        setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-    };
-
+    
     const fetchData = async () => {
         const viewName = "Grid%20view";
-        const queryParam = `view=${viewName}&sort[0][field]=Priority&sort[0][direction]=${sortDirection}`;
+        const queryParam = `view=${viewName}&sort[0][field]=Date&sort[0][direction]=${sortDirection}`;
+        const urlWithQueryParam = `${url}?${queryParam}`;
         const options = {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${apiKey}`,
             },
         };
-
-        const urlWithQueryParam = `${url}?${queryParam}`;
+     
 
         try {
             const response = await fetch(urlWithQueryParam, options);
@@ -61,7 +59,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
             console.log(error.message);
         }
     };
-
+    
     React.useEffect(() => {
         fetchData(); // eslint-disable-next-line
     }, [sortDirection]);
@@ -121,11 +119,16 @@ function TodoContainer({ tableName, baseName, apiKey }) {
         }
     };
     
+    const toggleSortDirection = () => {
+        setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    };
+
     return (
         <>
-            <h1>Todo List</h1>
+            <h1>{tableName}</h1> 
             <button onClick={toggleSortDirection}>
-                Toggle Sort Direction: {sortDirection === 'asc' ? 'Ascending' : 'Descending'}
+                <span style={{ display: 'none' }}>Sort: {sortDirection === 'asc' ? 'Ascending' : 'Descending'}</span>
+                <Sort />
             </button>
             <hr />
             
@@ -135,8 +138,8 @@ function TodoContainer({ tableName, baseName, apiKey }) {
             ) : (
                 <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
             )}
-        </>
 
+        </>
     );
 }
 
