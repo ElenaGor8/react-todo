@@ -1,19 +1,23 @@
 .ListItem {
-   position: relative;
    display: flex;
-   width: 100%;
+   align-items: center;
+   justify-content: space-between;
    padding: 10px;
-   margin: 10px;
+   padding-left: 20px;
+   margin-bottom: 10px;
    height: 40px;
    border-radius: .5em;
-   align-items: center;
-   background-color: rgba(103, 101, 101, 0.02);
-   color: #101884;
-   text-decoration: none;
-   text-align: left;
-   font-size: 1.2rem;
+   background-color: #fffbfb;
 }
 
-button svg {
-   color: red;
+.Title {
+   width: 50%;
+}
+
+.Date {
+   width: 15%;
+}
+
+.Checkbox {
+   width: 15%;
 }

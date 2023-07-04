@@ -1,7 +1,7 @@
 import React from 'react';
 import InputWithLabel from './InputWithLabel';
 import PropTypes from 'prop-types';
-import style from './AddTodoForm.module.css';
+import style from '../App.module.css';
 import { ReactComponent as Add } from '../img/add-fill.svg';
 
 const AddTodoForm = ({ onAddTodo }) => {
@@ -26,10 +26,12 @@ const AddTodoForm = ({ onAddTodo }) => {
             <InputWithLabel
                 todoTitle={todoTitle}
                 handleTitleChange={handleTitleChange}>
-                <strong>New Task: </strong>
+                New Item: 
             </InputWithLabel>
-            <button type="submit" title="add to do" className={style.addButton}>
-            <Add className={style.addIcon} />
+            <button className={style.addButton}
+                type="submit"
+                title="add item">
+                <Add className={style.addIcon} />
             </button>
         </form>
     );

@@ -8,18 +8,20 @@ const apiKey = process.env.REACT_APP_AIRTABLE_API_KEY;
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/"
-          element={<TodoContainer
-            tableName={tableName}
-            baseName={baseName}
-            apiKey={apiKey}
-          />}
-        />
-        <Route exact path="/new" element={<h1>New Todo List</h1>} />
-      </Routes>
-    </BrowserRouter>
+    <div className={style.App}>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/"
+            element={<TodoContainer
+              tableName={tableName}
+              baseName={baseName}
+              apiKey={apiKey}
+            />}
+          />
+          <Route exact path="/new" element={<h1>New Todo List</h1>} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 };
 
