@@ -1,16 +1,178 @@
+h1 {
+    font-family: 'Fjalla One', 'Helvetica', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #cf2d8f;
+}
+
+h2 {
+    font-size: 1.2rem;
+    font-weight: 200;
+}
+
+ul {
+    padding: 0;
+}
+
+button {
+    width: 40px;
+    height: 40px;
+    font: inherit;
+    cursor: pointer;
+    background-color: #e0c948;
+    align-items: center;
+    padding: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+}
+
 .TodoContainer {
+    
     max-width: 900px; 
     padding: 1rem 0;
     margin: 0 auto;
     width: 90vw;
     padding: 20px
+   
 }
+
+
 
 .AddTodoForm {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    margin-top: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.AddTodoForm input {
+    flex: 1;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 30px;
+    text-align: left;
+    font-size: 1.2rem;
+    border-color: #ccc;
+}
+
+.AddTodoForm label {
+    text-align: left;
+    font-size: 1.5rem;
+    
+}
+
+.AddTodoForm button {
+    align-self: flex-end;
+}
+
+
+.removeButton {
+    display: inline-block;
+    width: 5%;
+}
+
+.removeButton:hover .addIcon {
+    fill: #f00;
+}
+
+.ListItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    padding-left: 20px;
     margin-bottom: 10px;
+    height: 40px;
+    border-radius: .5em;
+    background-color: #fffbfb;
+}
+ 
+.Title {
+    width: 50%;
+}
+ 
+.Date {
+    width: 15%;
+}
+ 
+/* .Checkbox {
+    width: 15%;
+} */
+ 
+/*ipad air*/
+@media (max-width: 1024px) and (min-width: 768px) {
+        h1 {
+        font-size: 40px;
+        font-weight: 600;
+    }
+
+    .Title {
+        width: 50%;
+    }
+     
+    .Date {
+        width: 20%;
+    }
+} 
+
+/*mobile*/
+@media (max-width: 768px) {
+    h1 {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .AddTodoForm {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 10px;
+    }
+
+    .AddTodoForm label {
+        margin-right: 5px;
+        text-align: left;
+        font-size: 1rem;
+    }
+   
+    .AddTodoForm input {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .ListItem {
+       font-size: 15px;
+    }
+ 
+    .Title {
+        width: 60%;
+    }
+     
+    .Date {
+        display: none;
+    }
+  
+    .addButton {
+        background-color: transparent;
+        align-self: auto;
+    }
+
+    .sortButton {
+        display: none;
+    }
+
+    .removeButton {
+        background-color: transparent;
+        width: 10%;
+    }
+ 
+/*        
+    .Checkbox {
+        width: 15%;
+    }
+      */
 }

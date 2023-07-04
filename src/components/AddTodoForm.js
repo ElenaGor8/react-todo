@@ -1,7 +1,7 @@
 import React from 'react';
 import InputWithLabel from './InputWithLabel';
 import PropTypes from 'prop-types';
-import style from '../App.module.css';
+import style from './TodoContainer.module.css';
 import { ReactComponent as Add } from '../img/add-fill.svg';
 
 const AddTodoForm = ({ onAddTodo }) => {
