@@ -15,9 +15,10 @@ body {
     background-image: url('../src/img/blueeye.png'), url('../src/img/notebook.png'), url('../src/img/peacesign.png'), url('../src/img/writingnote.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-size: 200px, 300px, 150px, 200px;
-    background-position: 3% 10%, 15% 80%, 60% 3%, 70% 70%;
+    background-size: 200px, 200px, 150px, 200px;
+    background-position: 3% 10%, 15% 85%, 60% 3%, 80% 80%;
 }
+
 
 
 @media (max-width: 768px) {
@@ -27,7 +28,7 @@ body {
         background-repeat: no-repeat;
         background-size: cover;
         background-size: 100px;
-        background-position: 90% 95%;
+        background-position: 90% 8%;
     }
 }
 
@@ -38,6 +39,6 @@ body {
         background-repeat: no-repeat;
         background-size: cover;
         background-size: 300px, 150px;
-        background-position: 90% 95%, 20% 60%;
+        background-position: 85% 90%, 15% 75%;
     }
-} 
+}

@@ -29,22 +29,19 @@ button {
 }
 
 .TodoContainer {
-    
-    max-width: 900px; 
+
+    max-width: 900px;
     padding: 1rem 0;
     margin: 0 auto;
     width: 90vw;
     padding: 20px
-   
 }
-
-
 
 .AddTodoForm {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 20px;
     margin-top: 30px;
     margin-bottom: 30px;
 }
@@ -62,21 +59,28 @@ button {
 .AddTodoForm label {
     text-align: left;
     font-size: 1.5rem;
-    
 }
 
 .AddTodoForm button {
     align-self: flex-end;
+    margin-bottom: 10px;
 }
 
+.addIcon :hover{
+    fill: #09b9c0;
+}
 
 .removeButton {
     display: inline-block;
     width: 5%;
 }
 
-.removeButton:hover .addIcon {
+.trashIcon :hover{
     fill: #f00;
+}
+
+.sortIcon :hover{
+    fill: #09b9c0;
 }
 
 .ListItem {
@@ -90,22 +94,22 @@ button {
     border-radius: .5em;
     background-color: #fffbfb;
 }
- 
+
 .Title {
     width: 50%;
 }
- 
+
 .Date {
     width: 15%;
 }
- 
+
 /* .Checkbox {
     width: 15%;
 } */
- 
+
 /*ipad air*/
 @media (max-width: 1024px) and (min-width: 768px) {
-        h1 {
+    h1 {
         font-size: 40px;
         font-weight: 600;
     }
@@ -113,11 +117,11 @@ button {
     .Title {
         width: 50%;
     }
-     
+
     .Date {
         width: 20%;
     }
-} 
+}
 
 /*mobile*/
 @media (max-width: 768px) {
@@ -127,17 +131,18 @@ button {
     }
 
     .AddTodoForm {
+        display: flex;
         flex-direction: column;
         align-items: flex-start;
         margin-bottom: 10px;
     }
 
     .AddTodoForm label {
-        margin-right: 5px;
+        margin-right: 10px;
         text-align: left;
         font-size: 1rem;
     }
-   
+
     .AddTodoForm input {
         margin-left: 0;
         margin-right: 0;
@@ -145,17 +150,17 @@ button {
     }
 
     .ListItem {
-       font-size: 15px;
+        font-size: 15px;
     }
- 
+
     .Title {
         width: 60%;
     }
-     
+
     .Date {
         display: none;
     }
-  
+
     .addButton {
         background-color: transparent;
         align-self: auto;
@@ -169,8 +174,8 @@ button {
         background-color: transparent;
         width: 10%;
     }
- 
-/*        
+
+    /*        
     .Checkbox {
         width: 15%;
     }

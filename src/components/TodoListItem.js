@@ -21,7 +21,7 @@ const TodoListItem = ({ todo, onRemoveTodo }) => {
                 type="button"
                 title="remove item"
                 onClick={() => onRemoveTodo(todo.id)}>
-                <Remove className={style.addIcon} />
+                <Remove className={style.trashIcon} />
             </button>
         </li>
     );

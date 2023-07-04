@@ -135,9 +135,9 @@ function TodoContainer({ tableName, baseName, apiKey }) {
                 {/* Toggle Sort Direction: {sortDirection === 'asc' ? 'Ascending' : 'Descending'} */}
                 <button className={style.sortButton}
                     type="button"
-                    title="sort items"
+                    title="sort by due date"
                     onClick={toggleSortDirection}>
-                    <Sort />
+                    <Sort className={style.sortIcon}/>
                 </button>
             </div>
             
