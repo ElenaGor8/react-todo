@@ -19,8 +19,6 @@ body {
     background-position: 3% 10%, 15% 85%, 60% 3%, 80% 80%;
 }
 
-
-
 @media (max-width: 768px) {
     body {
         background-image: none;
@@ -28,7 +26,7 @@ body {
         background-repeat: no-repeat;
         background-size: cover;
         background-size: 100px;
-        background-position: 90% 8%;
+        background-position: 90% 5%;
     }
 }
 

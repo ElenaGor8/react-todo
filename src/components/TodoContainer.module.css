@@ -29,7 +29,6 @@ button {
 }
 
 .TodoContainer {
-
     max-width: 900px;
     padding: 1rem 0;
     margin: 0 auto;
@@ -41,7 +40,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    padding: 10px;
     margin-top: 30px;
     margin-bottom: 30px;
 }
@@ -63,12 +62,17 @@ button {
 
 .AddTodoForm button {
     align-self: flex-end;
-    margin-bottom: 10px;
 }
 
 .addIcon :hover{
     fill: #09b9c0;
 }
+
+
+/* style for the completed line item
+.Completed {
+    text-decoration: line-through;
+} */
 
 .removeButton {
     display: inline-block;
@@ -102,10 +106,6 @@ button {
 .Date {
     width: 15%;
 }
-
-/* .Checkbox {
-    width: 15%;
-} */
 
 /*ipad air*/
 @media (max-width: 1024px) and (min-width: 768px) {
@@ -174,10 +174,4 @@ button {
         background-color: transparent;
         width: 10%;
     }
-
-    /*        
-    .Checkbox {
-        width: 15%;
-    }
-      */
 }

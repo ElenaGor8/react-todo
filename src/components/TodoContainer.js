@@ -22,7 +22,6 @@ function TodoContainer({ tableName, baseName, apiKey }) {
             },
         };
 
-
         try {
             const response = await fetch(urlWithQueryParam, options);
 
@@ -37,8 +36,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
                     id: todo.id,
                     title: todo.fields.Title,
                     DueDate: todo.fields.Date,
-                    Checkbox: todo.fields.Done,
-                    
+                    completed: todo.fields.Completed
                 };
             });
 
@@ -90,8 +88,11 @@ function TodoContainer({ tableName, baseName, apiKey }) {
             const todo = await response.json();
             const newTodo = {
                 id: todo.id,
-                title: todo.fields.Title
+                title: todo.fields.Title,
+                DueDate: todo.fields.Date,
+                completed: todo.fields.Completed,
             };
+
             console.log(newTodo);
             setTodoList([...todoList, newTodo]);
         } catch (error) {
@@ -125,10 +126,49 @@ function TodoContainer({ tableName, baseName, apiKey }) {
         setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
     };
 
+    //checkbox functionality
+    //const toggleTodo = async (id) => {
+    //     try {
+    //       
+    //       const response = await fetch(`${url}/${id}`, {
+    //         method: 'PATCH',
+    //         headers: {
+    //           'Content-Type': 'application/json',
+    //           Authorization: `Bearer ${apiKey}`,
+    //         },
+    //         body: JSON.stringify({
+    //           completed: !todoList.find((todo) => todo.id === id)?.completed,
+    //         }),
+    //       });
+
+    //       if (!response.ok) {
+    //         throw new Error('Failed to toggle todo item.');
+    //       }
+    //      
+    //      } catch (error) {
+    //       console.log(error.message);
+    //     }
+    //   };
+
+    // const toggleTodo = (id) => {
+    //     setTodoList((prevTodoList) =>
+    //       prevTodoList.map((todo) => {
+    //         if (todo.id === id) {
+    //           return {
+    //             ...todo,
+    //             completed: !todo.completed,
+    //           };
+    //         }
+    //         return todo;
+    //       })
+    //     );
+    //   };
+
+
     return (
         <div className={style.TodoContainer}>
             <h1>{tableName}</h1>
-            
+
             <div className={style.AddTodoForm}>
                 <AddTodoForm onAddTodo={addTodo} />
 
@@ -137,13 +177,13 @@ function TodoContainer({ tableName, baseName, apiKey }) {
                     type="button"
                     title="sort by due date"
                     onClick={toggleSortDirection}>
-                    <Sort className={style.sortIcon}/>
+                    <Sort className={style.sortIcon} />
                 </button>
             </div>
-            
+
             {isLoading ? (
                 <p>Loading...</p>
-                ) : (
+            ) : (
                 <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
             )}
         </div>
@@ -158,3 +198,6 @@ TodoContainer.propTypes = {
 };
 
 export default TodoContainer;
+
+
+// onToggleTodo={toggleTodo}

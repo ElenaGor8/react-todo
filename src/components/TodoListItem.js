@@ -1,21 +1,32 @@
 import React from 'react';
 import { ReactComponent as Remove } from '../img/trash.svg';
 import style from '../components/TodoContainer.module.css';
-
 import PropTypes from 'prop-types';
 
-const TodoListItem = ({ todo, onRemoveTodo }) => {
+const TodoListItem = ({ todo, onRemoveTodo, onToggleTodo }) => {
     const formattedDate = new Date(todo.DueDate).toLocaleDateString("en-US", {
         month: "2-digit",
         day: "2-digit",
         year: "numeric"
     });
 
+    //adding checkboxes
+    // const handleToggle = () => {
+    //     onToggleTodo(todo.id);
+    // };
+
     return (
         <li className={style.ListItem}>
-            <span className={style.Title}>{todo.title}</span>
-            <span className={style.Date}>{todo.DueDate}</span>
-            <span className={style.Done}>{todo.Checkbox}</span>
+
+            <span
+                className={`${style.Title} ${todo.completed ? style.Completed : ''}`}
+            >   {todo.title}
+            </span>
+
+            <span
+                className={`${style.Date} ${todo.completed ? style.Completed : ''}`}
+            >   {formattedDate}
+            </span>
 
             <button className={style.removeButton}
                 type="button"
@@ -28,12 +39,9 @@ const TodoListItem = ({ todo, onRemoveTodo }) => {
 };
 
 TodoListItem.propTypes = {
-    todo: PropTypes.array,
-    id: PropTypes.string,
-    title: PropTypes.string,
-    Priority: PropTypes.string,
-    DueDate: PropTypes.string,
-    onRemoveTodo: PropTypes.func,
+    todo: PropTypes.object,
+    onRemoveTodo: PropTypes.func.isRequired,
+    onToggleTodo: PropTypes.func.isRequired,
 };
 
 export default TodoListItem;
