@@ -1,28 +1,50 @@
 import React from 'react';
-import { ReactComponent as Remove } from '../img/delete_FILL0_wght400_GRAD0_opsz48.svg';
-import style from './TodoListItem.module.css';
+import { ReactComponent as Remove } from '../img/trash.svg';
+import style from '../components/TodoContainer.module.css';
 import PropTypes from 'prop-types';
 
-const TodoListItem = ({ todo, onRemoveTodo }) => {
+const TodoListItem = ({ todo, onRemoveTodo, onToggleTodo }) => {
+    const formattedDate = new Date(todo.DueDate).toLocaleDateString("en-US", {
+        month: "2-digit",
+        day: "2-digit",
+        year: "numeric"
+    });
+
+    //adding checkboxes
+    // const handleToggle = () => {
+    //     onToggleTodo(todo.id);
+    // };
+
     return (
         <li className={style.ListItem}>
-            <span>{todo.title}</span>
-            <span>{todo.Priority}</span>
-            <span>{todo.DueDate}</span>
 
-            <button className={style.ButtonRemove}
+            <span
+                className={`${style.Title} ${todo.completed ? style.Completed : ''}`}
+            >   {todo.title}
+            </span>
+
+            <span
+                className={`${style.Date} ${todo.completed ? style.Completed : ''}`}
+            >   {formattedDate}
+            </span>
+
+            <button className={style.removeButton}
                 type="button"
+                title="remove item"
                 onClick={() => onRemoveTodo(todo.id)}>
-                <Remove />
+                <Remove className={style.trashIcon} />
             </button>
         </li>
     );
 };
 
 TodoListItem.propTypes = {
-    todo: PropTypes.array,
-    onRemoveTodo: PropTypes.func,
+    todo: PropTypes.object,
+    onRemoveTodo: PropTypes.func.isRequired,
+    onToggleTodo: PropTypes.func.isRequired,
 };
 
 export default TodoListItem;
+
+
 

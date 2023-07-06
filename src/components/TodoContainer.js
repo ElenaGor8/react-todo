@@ -2,27 +2,25 @@ import React from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 import PropTypes from 'prop-types';
+import { ReactComponent as Sort } from '../img/arrow-sort-24-filled.svg';
+import style from './TodoContainer.module.css';
 
 function TodoContainer({ tableName, baseName, apiKey }) {
     const [todoList, setTodoList] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
     const [sortDirection, setSortDirection] = React.useState('asc'); // Default sort direction is ascending
     const url = `https://api.airtable.com/v0/${baseName}/${tableName}`;
-    const toggleSortDirection = () => {
-        setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-    };
 
     const fetchData = async () => {
         const viewName = "Grid%20view";
-        const queryParam = `view=${viewName}&sort[0][field]=Priority&sort[0][direction]=${sortDirection}`;
+        const queryParam = `view=${viewName}&sort[0][field]=Date&sort[0][direction]=${sortDirection}`;
+        const urlWithQueryParam = `${url}?${queryParam}`;
         const options = {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${apiKey}`,
             },
         };
-
-        const urlWithQueryParam = `${url}?${queryParam}`;
 
         try {
             const response = await fetch(urlWithQueryParam, options);
@@ -37,8 +35,8 @@ function TodoContainer({ tableName, baseName, apiKey }) {
                 return {
                     id: todo.id,
                     title: todo.fields.Title,
-                    Priority: todo.fields.Priority,
                     DueDate: todo.fields.Date,
+                    completed: todo.fields.Completed
                 };
             });
 
@@ -90,8 +88,11 @@ function TodoContainer({ tableName, baseName, apiKey }) {
             const todo = await response.json();
             const newTodo = {
                 id: todo.id,
-                title: todo.fields.Title
+                title: todo.fields.Title,
+                DueDate: todo.fields.Date,
+                completed: todo.fields.Completed,
             };
+
             console.log(newTodo);
             setTodoList([...todoList, newTodo]);
         } catch (error) {
@@ -120,23 +121,72 @@ function TodoContainer({ tableName, baseName, apiKey }) {
             console.log(error.message);
         }
     };
-    
+
+    const toggleSortDirection = () => {
+        setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    };
+
+    //checkbox functionality
+    //const toggleTodo = async (id) => {
+    //     try {
+    //       
+    //       const response = await fetch(`${url}/${id}`, {
+    //         method: 'PATCH',
+    //         headers: {
+    //           'Content-Type': 'application/json',
+    //           Authorization: `Bearer ${apiKey}`,
+    //         },
+    //         body: JSON.stringify({
+    //           completed: !todoList.find((todo) => todo.id === id)?.completed,
+    //         }),
+    //       });
+
+    //       if (!response.ok) {
+    //         throw new Error('Failed to toggle todo item.');
+    //       }
+    //      
+    //      } catch (error) {
+    //       console.log(error.message);
+    //     }
+    //   };
+
+    // const toggleTodo = (id) => {
+    //     setTodoList((prevTodoList) =>
+    //       prevTodoList.map((todo) => {
+    //         if (todo.id === id) {
+    //           return {
+    //             ...todo,
+    //             completed: !todo.completed,
+    //           };
+    //         }
+    //         return todo;
+    //       })
+    //     );
+    //   };
+
+
     return (
-        <>
-            <h1>Todo List</h1>
-            <button onClick={toggleSortDirection}>
-                Toggle Sort Direction: {sortDirection === 'asc' ? 'Ascending' : 'Descending'}
-            </button>
-            <hr />
-            
-            <AddTodoForm onAddTodo={addTodo} />
+        <div className={style.TodoContainer}>
+            <h1>{tableName}</h1>
+
+            <div className={style.AddTodoForm}>
+                <AddTodoForm onAddTodo={addTodo} />
+
+                {/* Toggle Sort Direction: {sortDirection === 'asc' ? 'Ascending' : 'Descending'} */}
+                <button className={style.sortButton}
+                    type="button"
+                    title="sort by due date"
+                    onClick={toggleSortDirection}>
+                    <Sort className={style.sortIcon} />
+                </button>
+            </div>
+
             {isLoading ? (
                 <p>Loading...</p>
             ) : (
                 <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
             )}
-        </>
-
+        </div>
     );
 }
 
@@ -148,3 +198,6 @@ TodoContainer.propTypes = {
 };
 
 export default TodoContainer;
+
+
+// onToggleTodo={toggleTodo}
