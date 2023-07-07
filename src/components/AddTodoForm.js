@@ -2,7 +2,7 @@ import React from 'react';
 import InputWithLabel from './InputWithLabel';
 import PropTypes from 'prop-types';
 import style from './TodoContainer.module.css';
-import { ReactComponent as Add } from '../img/add-fill.svg';
+import { ReactComponent as Add } from '../img/add-svgrepo-com.svg';
 
 const AddTodoForm = ({ onAddTodo }) => {
     const [todoTitle, setTodoTitle] = React.useState();

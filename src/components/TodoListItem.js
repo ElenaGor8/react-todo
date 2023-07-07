@@ -4,6 +4,8 @@ import style from '../components/TodoContainer.module.css';
 import PropTypes from 'prop-types';
 
 const TodoListItem = ({ todo, onRemoveTodo, onToggleTodo }) => {
+    console.log(onToggleTodo);
+
     const formattedDate = new Date(todo.DueDate).toLocaleDateString("en-US", {
         month: "2-digit",
         day: "2-digit",
@@ -11,12 +13,19 @@ const TodoListItem = ({ todo, onRemoveTodo, onToggleTodo }) => {
     });
 
     //adding checkboxes
-    // const handleToggle = () => {
-    //     onToggleTodo(todo.id);
-    // };
+    const handleToggle = () => {
+        onToggleTodo(todo.id);
+    };
 
     return (
         <li className={style.ListItem}>
+            <input
+                className={style.Checkbox}
+                type="checkbox"
+                checked={todo.completed}
+                onChange={handleToggle}
+                // onChange={() => onToggleTodo(todo.id)}
+            />
 
             <span
                 className={`${style.Title} ${todo.completed ? style.Completed : ''}`}

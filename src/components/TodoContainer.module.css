@@ -68,11 +68,9 @@ button {
     fill: #09b9c0;
 }
 
-
-/* style for the completed line item
 .Completed {
     text-decoration: line-through;
-} */
+}
 
 .removeButton {
     display: inline-block;
