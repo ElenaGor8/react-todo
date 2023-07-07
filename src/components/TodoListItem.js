@@ -13,19 +13,18 @@ const TodoListItem = ({ todo, onRemoveTodo, onToggleTodo }) => {
     });
 
     //adding checkboxes
-    // const handleToggle = () => {
-    //     onToggleTodo(todo.id);
-    // };
+    const handleToggle = () => {
+        onToggleTodo(todo.id);
+    };
 
     return (
         <li className={style.ListItem}>
-            
             <input
                 className={style.Checkbox}
                 type="checkbox"
                 checked={todo.completed}
-                // onChange={handleToggle}
-                onChange={() => onToggleTodo(todo.id)}
+                onChange={handleToggle}
+                // onChange={() => onToggleTodo(todo.id)}
             />
 
             <span

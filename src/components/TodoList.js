@@ -6,7 +6,7 @@ import style from "../App.module.css";
 const TodoList = ({ todoList, onRemoveTodo, onToggleTodo }) => (
     <ul>
         {todoList.map((todo) => (
-            <TodoListItem key={todo.id} todo={todo} onRemoveTodo={onRemoveTodo} onToggleTodo={{onToggleTodo}} />
+            <TodoListItem key={todo.id} todo={todo} onRemoveTodo={onRemoveTodo} onToggleTodo={onToggleTodo} />
         ))}
     </ul>
 );
