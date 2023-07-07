@@ -29,8 +29,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
                 throw new Error(`Error: ${response.status}`);
             }
             const data = await response.json();
-            console.log(data);
-
+          
             const todos = data.records.map((todo) => {
                 return {
                     id: todo.id,
@@ -127,44 +126,60 @@ function TodoContainer({ tableName, baseName, apiKey }) {
     };
 
     //checkbox functionality
-    //const toggleTodo = async (id) => {
+    // const toggleTodo = async (id, completed) => {
+    //     const checkBox = {
+    //         fields: {
+    //             // Completed: completed
+    //         },
+    //     };
+    //     console.log(checkBox);
+
     //     try {
-    //       
-    //       const response = await fetch(`${url}/${id}`, {
+          
+    //       const response = await fetch(`${url}/${id}`,{ 
     //         method: 'PATCH',
     //         headers: {
     //           'Content-Type': 'application/json',
     //           Authorization: `Bearer ${apiKey}`,
     //         },
-    //         body: JSON.stringify({
-    //           completed: !todoList.find((todo) => todo.id === id)?.completed,
-    //         }),
+    //         body: JSON.stringify(checkBox)
+    //         // body: JSON.stringify({
+    //         //   completed: !todoList.find((todo) => todo.id === id)?.completed,
+    //         // }),
     //       });
 
     //       if (!response.ok) {
     //         throw new Error('Failed to toggle todo item.');
     //       }
-    //      
+         
     //      } catch (error) {
     //       console.log(error.message);
     //     }
     //   };
+    const onToggleTodo = async (id) => {
+            try {
+              
+              const response = await fetch(`${url}/${id}`, {
+                method: 'PATCH',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${apiKey}`,
+                },
+                body: JSON.stringify({
+                  completed: !todoList.find((todo) => todo.id === id)?.completed,
+                }),
+              });
+    console.log(response);
 
-    // const toggleTodo = (id) => {
-    //     setTodoList((prevTodoList) =>
-    //       prevTodoList.map((todo) => {
-    //         if (todo.id === id) {
-    //           return {
-    //             ...todo,
-    //             completed: !todo.completed,
-    //           };
-    //         }
-    //         return todo;
-    //       })
-    //     );
-    //   };
-
-
+              if (!response.ok) {
+                throw new Error('Failed to toggle todo item.');
+              }
+             
+            } catch (error) {
+              console.log(error.message);
+            }
+    };
+    
     return (
         <div className={style.TodoContainer}>
             <h1>{tableName}</h1>
@@ -184,7 +199,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
             {isLoading ? (
                 <p>Loading...</p>
             ) : (
-                <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+                <TodoList todoList={todoList} onRemoveTodo={removeTodo} onToggleTodo={onToggleTodo} />
             )}
         </div>
     );
@@ -198,6 +213,3 @@ TodoContainer.propTypes = {
 };
 
 export default TodoContainer;
-
-
-// onToggleTodo={toggleTodo}

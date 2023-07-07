@@ -3,10 +3,10 @@ import TodoListItem from './TodoListItem';
 import PropTypes from 'prop-types';
 import style from "../App.module.css";
 
-const TodoList = ({ todoList, onRemoveTodo, /*onToggleTodo*/ }) => (
+const TodoList = ({ todoList, onRemoveTodo, onToggleTodo }) => (
     <ul>
         {todoList.map((todo) => (
-            <TodoListItem key={todo.id} todo={todo} onRemoveTodo={onRemoveTodo} /*onToggleTodo={{onToggleTodo}}*/ />
+            <TodoListItem key={todo.id} todo={todo} onRemoveTodo={onRemoveTodo} onToggleTodo={{onToggleTodo}} />
         ))}
     </ul>
 );
@@ -14,7 +14,7 @@ const TodoList = ({ todoList, onRemoveTodo, /*onToggleTodo*/ }) => (
 TodoList.propTypes = {
     todoList: PropTypes.array,
     onRemoveTodo: PropTypes.func,
-    // onToggleTodo: PropTypes.func.isRequired,
+    onToggleTodo: PropTypes.func.isRequired,
 };
 
 export default TodoList;

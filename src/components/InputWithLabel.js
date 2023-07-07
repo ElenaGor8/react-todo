@@ -25,7 +25,7 @@ const InputWithLabel = (props) => {
 // Define the propTypes property
 InputWithLabel.propTypes = {
     children: PropTypes.node.isRequired,
-    todoTitle: PropTypes.string.isRequired,
+    todoTitle: PropTypes.string,
     handleTitleChange: PropTypes.func.isRequired,
 };
 
